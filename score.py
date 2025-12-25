@@ -5,7 +5,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 def report_classification(y_test, y_pred):
 
-    print(classification_report(y_test, y_pred))
+    print(classification_report(y_test, y_pred, zero_division=0))
     print(confusion_matrix(y_test, y_pred))
 
 def report_prob(y_test, y_proba, threshold = 0.5):

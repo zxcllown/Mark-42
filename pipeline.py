@@ -2,6 +2,35 @@ import feature
 import pandas as pd
 import os
 
+def interactive():
+    count = input('Rows of data set: ')
+
+    # Проверяем, есть ли уже сохранённый файл
+    if os.path.exists("Data/data.csv"):
+        os.remove("Data/data.csv")
+        print("File Data/data.csv deleted successfully.")
+
+    data_input = pd.DataFrame(columns=['Subject', 'Message', 'Label'])
+
+    for i in range(int(count)):
+        subject = input("Subject: ")
+        message = input("Message: ")
+        label = int(input("Label: "))
+        while label not in [0, 1]:
+            label = int(input("Label: "))
+
+        data_input.loc[len(data_input)] = [subject, message, label]
+
+        print("\nТекущие данные:")
+        print(data_input)
+
+        # Сохраняем в CSV после каждого ввода, чтобы данные не потерялись
+        data_input.to_csv("Data/data.csv", index=False)
+
+    print("\nДанные сохранены в 'Data/data.csv'.")
+
+    return data_input
+
 def drop_useless_column(data, useless_column=None):
 
     if useless_column is None:
@@ -88,8 +117,10 @@ def save_new_data(data, subject_col=None, message_col=None, column=None, useless
     data = mapping_label(data, column)
     data = drop_duplicate(data)
     data = dropna_label(data)
-    data.to_csv(PATH, index=False, encoding="utf-8")
-    print("Report saved to " + PATH)
+
+    if PATH is not None:
+        data.to_csv(PATH, index=False, encoding="utf-8")
+        print("Report saved to " + PATH)
 
     return data
 

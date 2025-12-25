@@ -1,0 +1,59 @@
+=== DATASET OVERVIEW ===
+   Message ID                       Subject                                            Message Spam/Ham        Date
+0           0  christmas tree farm pictures                                                NaN      ham  1999-12-10
+1           1      vastar resources , inc .  gary , production from the high island larger ...      ham  1999-12-13
+2           2  calpine daily gas nomination             - calpine daily gas nomination 1 . doc      ham  1999-12-14
+3           3                    re : issue  fyi - see note below - already done .\nstella\...      ham  1999-12-14
+4           4     meter 7268 nov allocation  fyi .\n- - - - - - - - - - - - - - - - - - - -...      ham  1999-12-14
+
+Dataset info:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 33716 entries, 0 to 33715
+Data columns (total 5 columns):
+ #   Column      Non-Null Count  Dtype 
+---  ------      --------------  ----- 
+ 0   Message ID  33716 non-null  int64 
+ 1   Subject     33427 non-null  object
+ 2   Message     33345 non-null  object
+ 3   Spam/Ham    33716 non-null  object
+ 4   Date        33716 non-null  object
+dtypes: int64(1), object(4)
+memory usage: 1.3+ MB
+
+=== CLASS DISTRIBUTION ===
+Spam/Ham
+spam    17171
+ham     16545
+Name: count, dtype: int64
+
+Class ratio:
+Spam/Ham
+spam    0.509283
+ham     0.490717
+Name: proportion, dtype: float64
+
+=== EMPTY TEXT STATS ===
+Blank Subject by class:
+Spam/Ham
+spam    289
+Name: count, dtype: int64
+
+Blank Message by class:
+Spam/Ham
+spam    319
+ham      52
+Name: count, dtype: int64
+
+Empty Subject: 289
+Empty Message: 371
+Empty Subject & Message: 51
+
+=== DUPLICATES ===
+Full duplicates: 0
+Text duplicates: 3222
+Conflicting texts: 0
+
+=== TEXT LENGTH STATS ===
+Average subject length: 34.60
+Average message length: 1470.36
+

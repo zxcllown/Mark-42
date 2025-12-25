@@ -95,13 +95,12 @@ def Logistic_Regression_test(data1, data2):
     scaler = StandardScaler()# scaler of data
 
     X_struct1 = data1[features]  # dense Data Frame
-    tfidf1, X_tfidf1, y1 = fe.tfid_data(data1)  # sparse matrix
+    tfidf, X_tfidf1, y1, X_tfidf2, y2 = fe.tfid_two_data(data1, data2)  # sparse matrix
     X_struct_scaled1 = scaler.fit_transform(X_struct1)  # N (0,ham)
     X_combined1 = hstack([X_tfidf1, X_struct_scaled1])  # combine TFIDF and Structure features
 
     X_struct2 = data2[features]  # dense Data Frame
-    tfidf2, X_tfidf2, y2 = fe.tfid_data(data2)  # sparse matrix
-    X_struct_scaled2 = scaler.fit_transform(X_struct2)  # N (0,ham)
+    X_struct_scaled2 = scaler.transform(X_struct2)  # N (0,ham)
     X_combined2 = hstack([X_tfidf2, X_struct_scaled2])  # combine TFIDF and Structure features
 
     X_train = X_tfidf1  # X_combined1
@@ -130,13 +129,12 @@ def Linear_SVC_test(data1, data2):
     scaler = StandardScaler()  # scaler of data
 
     X_struct1 = data1[features]  # dense Data Frame
-    tfidf1, X_tfidf1, y1 = fe.tfid_data(data1)  # sparse matrix
+    tfidf, X_tfidf1, y1, X_tfidf2, y2 = fe.tfid_two_data(data1, data2)
     X_struct_scaled1 = scaler.fit_transform(X_struct1)  # N (0,ham)
     X_combined1 = hstack([X_tfidf1, X_struct_scaled1])  # combine TFIDF and Structure features
 
-    X_struct2 = data2[features]  # dense Data Frame
-    tfidf2, X_tfidf2, y2 = fe.tfid_data(data2)  # sparse matrix
-    X_struct_scaled2 = scaler.fit_transform(X_struct2)  # N (0,ham)
+    X_struct2 = data2[features]  # dense Data Frame  # sparse matrix
+    X_struct_scaled2 = scaler.transform(X_struct2)  # N (0,ham)
     X_combined2 = hstack([X_tfidf2, X_struct_scaled2])  # combine TFIDF and Structure features
 
     X_train = X_tfidf1 #X_combined1

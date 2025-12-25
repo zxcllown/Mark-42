@@ -1,5 +1,19 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+def tfid_two_data(data1, data2):
+    tfidf = TfidfVectorizer(
+        max_features=5000,  # top 5000 words
+        stop_words='english'  # leave the, is , and
+    )
+
+    X_tfidf1 = tfidf.fit_transform(data1['Text'])  # fit is learn and transform word become int
+    y1 = data1['Label']  # label 0 or ham
+
+    X_tfidf2 = tfidf.transform(data2['Text'])  # fit is learn and transform word become int
+    y2 = data2['Label']  # label 0 or ham
+
+    return tfidf, X_tfidf1, y1, X_tfidf2, y2
+
 def tfid_data(data):
 
     tfidf = TfidfVectorizer(
